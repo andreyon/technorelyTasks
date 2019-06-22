@@ -20,7 +20,7 @@ class Student extends User {  //может быть по условию зада
     }
 
     getFullName() {
-        super.getFullname();
+        return super.getFullname();
     }
 
     getCourse() {
