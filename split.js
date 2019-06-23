@@ -12,6 +12,10 @@ function split(string, separator, limit) {
         arr[0] = string;
     }
 
+    else if (string === ""){
+        arr[0] = string;
+    }
+
     else {
         for (let i = 0; i < string.length; i++) {
 
@@ -40,4 +44,5 @@ console.log(split(string, ' '));
 console.log(split(string, " ", 4));
 console.log(split(string, ""));
 console.log(split(string));
+console.log(split(""));
 
