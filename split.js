@@ -23,7 +23,6 @@ function split(string, separator, limit) {
                 arr[arrIndex] = arrElem;
                 arrIndex++;
                 arrElem = "";
-                continue;
             }
 
             else if (arrIndex >= limit) {
@@ -41,8 +40,10 @@ function split(string, separator, limit) {
 const string = 'Lorem ipsum dolor sit amet consectetur adipiscing elit';
 
 console.log(split(string, ' '));
-console.log(split(string, " ", 4));
-console.log(split(string, ""));
-console.log(split(string));
-console.log(split(""));
+
+// all checks
+console.log(split(string, " ", 4)); //with limit
+console.log(split(string, "")); // if separator empty
+console.log(split(string)); // without separator
+console.log(split("")); // if string empty
 
