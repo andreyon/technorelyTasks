@@ -12,7 +12,7 @@ class MyString {
         let arr = str.split(' ');
         return arr.map(function (el) {
             return el.charAt(0).toUpperCase() + el.slice(1);
-        }).join(' ');
+        }).join(' '); //, this.arr
     };
 }
 
