@@ -1,7 +1,7 @@
 const map = (array, fn) => {
     let newArray = [];
     for (let i = 0; i <array.length; i++){
-        newArray[i] = fn(array[i], i);
+        newArray[i] = fn(array[i], i, array);
     }
     return newArray;
 };
