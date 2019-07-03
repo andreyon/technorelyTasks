@@ -1,1 +1,1 @@
-This is tasks for Technorely pre-production JS
+This is tasks for Technorely pre-production JS Lecture_6
