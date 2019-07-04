@@ -1,35 +1,48 @@
-const ownFetch = () => {
-// 1. Создаём новый объект XMLHttpRequest
-    let xhr = new XMLHttpRequest();
+const ownFetch = (url, ...rest) => {
 
-// 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users', false);
-
-// 3. Отсылаем запрос
-    xhr.send();
-
-    console.dir(xhr); // responseText -- текст ответа.
-    console.log(xhr.status);
-// 4. Если код ответа сервера не 200, то это ошибка
-    if (xhr.status != 200) {
-        // обработать ошибку
-        alert(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
-    } else {
-        // вывести результат
-        console.log(xhr.responseText); // responseText -- текст ответа.
-    }
+    let response = new XMLHttpRequest();
 
 
+    response.open('GET', url, true);
+
+    response.send();
+
+    /* xhr.onreadystatechange = function () {
+         if (this.readyState !== 4) return;
+
+         if (xhr.status !== 200) {
+             alert(xhr.status + ": " + xhr.statusText);
+         }
+         else {
+             console.log(xhr.responseText); // responseText -- текст ответа.
+             // return
+         }
+     };*/
+
+    let promise = new Promise((resolve, reject) => {
+
+        response.onreadystatechange = function () {
+
+            if (response.status !== 200) {
+                resolve(alert(response.status + ": " + response.statusText))
+            }
+
+            else {
+                resolve(response);
+            }
+        }
+    });
+
+    return promise;
 };
 
-ownFetch();
-
+ownFetch('https://jsonplaceholder.typicode.com/posts')
+    .then(console.log)
 
 /*ownFetch('https://jsonplaceholder.typicode.com/posts')
     .then(console.log)
     .then(res => res());
-.
-catch(err => console.log(err));*/
+    .catch(err => console.log(err));*/
 
 
 /*В фалйе 'ownFetch.js', используя Promise, написать обертку над XHR. В результате ваш ownFetch должен работать так же как и нативный fetch.
