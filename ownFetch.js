@@ -23,5 +23,5 @@ const ownFetch = (url) => {
 
 ownFetch('https://jsonplaceholder.typicode.com/posts')
     .then(console.log)
-    .then(res => res())
+    .then(res => res.json())
     .catch(err => console.log(err));
